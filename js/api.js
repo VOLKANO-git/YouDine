@@ -3,3 +3,7 @@ const api = axios.create({
   timeout: 5000,
 });
 
+export async function getRecipes() {
+  const response = await api.get("/recipes", { params: { limit: 12 } });
+  return response.data.recipes;
+}

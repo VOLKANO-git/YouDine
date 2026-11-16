@@ -1,3 +1,5 @@
-import { getRecipes } from "./api.js";
+import { getRecipes } from './api.js';
+import { showLoading, renderRecipes } from './display.js';
 
-getRecipes();
+showLoading();
+getRecipes().then(renderRecipes).catch(console.error);

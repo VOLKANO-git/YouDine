@@ -1,6 +1,11 @@
 const recipesEl = document.getElementById("recipes");
 const statusEl = document.getElementById("status");
+const emptyEl = document.getElementById('aucun-resultat');
 
+
+export function showEmpty(isEmpty) {
+  emptyEl.classList.toggle('hidden', !isEmpty);
+}
 export function showLoading() {
   statusEl.textContent = "Chargement...";
 }

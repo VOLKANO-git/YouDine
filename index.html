@@ -32,6 +32,24 @@
         </button>
       </form>
 
+      <form id="search-form" class="flex gap-2 mb-4">
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Rechercher une recette..."
+          class="flex-1 border rounded px-3 py-2"
+        />
+        <button
+          type="submit"
+          class="bg-orange-500 text-white px-4 py-2 rounded"
+        >
+          Chercher
+        </button>
+        <button type="button" class="revoir bg-gray-200 px-4 py-2 rounded">
+          Revoir toutes les recettes
+        </button>
+      </form>
+
       <p id="status" class="text-gray-600 mb-4"></p>
 
       <div id="aucun-resultat" class="hidden text-center py-8">
@@ -110,6 +128,82 @@
         </p>
       </form>
 
+
+      <div id="aucun-resultat" class="hidden text-center py-8">
+        <p class="text-gray-600 mb-3">Aucune recette trouvée</p>
+        <button
+          id="revoir-tout"
+          type="button"
+          class="bg-orange-500 text-white px-4 py-2 rounded"
+        >
+          Revoir toutes les recettes
+        </button>
+      </div>
+      <form
+        id="form-recette"
+        class="bg-white rounded-xl shadow p-4 mb-6 grid gap-3 sm:grid-cols-2"
+      >
+        <h2 class="text-lg font-semibold sm:col-span-2">
+          Proposer une recette
+        </h2>
+
+        <div>
+          <input
+            id="nom"
+            type="text"
+            placeholder="Nom de la recette"
+            class="w-full border rounded px-3 py-2"
+          />
+          <p class="erreur hidden text-sm text-red-600" data-champ="name"></p>
+        </div>
+        <div>
+          <input
+            id="cuisine"
+            type="text"
+            placeholder="Cuisine (ex : Italian)"
+            class="w-full border rounded px-3 py-2"
+          />
+          <p
+            class="erreur hidden text-sm text-red-600"
+            data-champ="cuisine"
+          ></p>
+        </div>
+        <div>
+          <select id="difficulte" class="w-full border rounded px-3 py-2">
+            <option value="">Difficulté</option>
+            <option value="Easy">Facile</option>
+            <option value="Medium">Moyen</option>
+            <option value="Difficult">Difficile</option>
+          </select>
+          <p
+            class="erreur hidden text-sm text-red-600"
+            data-champ="difficulty"
+          ></p>
+        </div>
+        <div>
+          <input
+            id="temps"
+            type="number"
+            placeholder="Temps (minutes)"
+            class="w-full border rounded px-3 py-2"
+          />
+          <p
+            class="erreur hidden text-sm text-red-600"
+            data-champ="prepTimeMinutes"
+          ></p>
+        </div>
+
+        <button
+          id="btn-ajouter"
+          type="submit"
+          class="bg-orange-500 text-white px-4 py-2 rounded sm:col-span-2"
+        >
+          Ajouter
+        </button>
+        <p id="form-succes" class="hidden text-green-700 sm:col-span-2">
+          Recette ajoutée !
+        </p>
+      </form>
       <div id="recipes" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
     </main>
 

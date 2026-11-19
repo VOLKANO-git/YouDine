@@ -8,6 +8,11 @@ export async function getRecipes() {
   return response.data.recipes;
 }
 
+export async function searchRecipes(keyword) {
+  const response = await api.get("/recipes/search", { params: { q: keyword } });
+  return response.data.recipes;
+}
+
 export async function searchRecipes(recherche) {
   const response = await api.get("/recipes/search", { params: { q: recherche } });
   return response.data.recipes;

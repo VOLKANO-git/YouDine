@@ -28,6 +28,3 @@ revoirBtns.forEach((btn) => {
 });
 
 afficher("");
-
-
-

@@ -13,11 +13,6 @@ export async function searchRecipes(keyword) {
   return response.data.recipes;
 }
 
-export async function searchRecipes(recherche) {
-  const response = await api.get("/recipes/search", { params: { q: recherche } });
-  return response.data.recipes;
-}
-
 export async function addRecipe(recette) {
   const response = await api.post("/recipes/add", recette);
   return response.data;

@@ -19,7 +19,8 @@ export function validerRecette(recette) {
   }
 
   return erreurs;
-}export function validerRecette(recette) {
+}
+export function validerRecette(recette) {
   const erreurs = {};
 
   if (recette.name.length < 3 || recette.name.length > 60) {

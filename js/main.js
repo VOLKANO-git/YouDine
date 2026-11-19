@@ -26,5 +26,3 @@ revoirBtns.forEach((btn) => {
     afficher("");
   });
 });
-
-afficher("");

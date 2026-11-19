@@ -5,14 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carnet de recettes : Axios en cuisine</title>
     <script src="https://cdn.tailwindcss.com"></script>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-=======
->>>>>>> 38aecb7 (importing tailwind)
-=======
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
->>>>>>> 80f4557 (importing axios)
   </head>
   <body class="bg-orange-50 min-h-screen">
     <header class="bg-orange-500 text-white p-6 shadow">
@@ -21,7 +14,6 @@
     </header>
 
     <main class="max-w-6xl mx-auto p-6">
-<<<<<<< HEAD
       <form id="search-form" class="flex gap-2 mb-4">
         <input
           id="search-input"
@@ -52,10 +44,71 @@
           Revoir toutes les recettes
         </button>
       </div>
+      <form
+        id="form-recette"
+        class="bg-white rounded-xl shadow p-4 mb-6 grid gap-3 sm:grid-cols-2"
+      >
+        <h2 class="text-lg font-semibold sm:col-span-2">
+          Proposer une recette
+        </h2>
 
-=======
-      <p id="status" class="text-gray-600 mb-4"></p>
->>>>>>> 38aecb7 (importing tailwind)
+        <div>
+          <input
+            id="nom"
+            type="text"
+            placeholder="Nom de la recette"
+            class="w-full border rounded px-3 py-2"
+          />
+          <p class="erreur hidden text-sm text-red-600" data-champ="name"></p>
+        </div>
+        <div>
+          <input
+            id="cuisine"
+            type="text"
+            placeholder="Cuisine (ex : Italian)"
+            class="w-full border rounded px-3 py-2"
+          />
+          <p
+            class="erreur hidden text-sm text-red-600"
+            data-champ="cuisine"
+          ></p>
+        </div>
+        <div>
+          <select id="difficulte" class="w-full border rounded px-3 py-2">
+            <option value="">Difficulté</option>
+            <option value="Easy">Facile</option>
+            <option value="Medium">Moyen</option>
+            <option value="Difficult">Difficile</option>
+          </select>
+          <p
+            class="erreur hidden text-sm text-red-600"
+            data-champ="difficulty"
+          ></p>
+        </div>
+        <div>
+          <input
+            id="temps"
+            type="number"
+            placeholder="Temps (minutes)"
+            class="w-full border rounded px-3 py-2"
+          />
+          <p
+            class="erreur hidden text-sm text-red-600"
+            data-champ="prepTimeMinutes"
+          ></p>
+        </div>
+
+        <button
+          id="btn-ajouter"
+          type="submit"
+          class="bg-orange-500 text-white px-4 py-2 rounded sm:col-span-2"
+        >
+          Ajouter
+        </button>
+        <p id="form-succes" class="hidden text-green-700 sm:col-span-2">
+          Recette ajoutée !
+        </p>
+      </form>
       <div id="recipes" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
     </main>
 

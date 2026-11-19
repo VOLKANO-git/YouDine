@@ -1,44 +1,15 @@
-export function validerRecette(recette) {
+export function validerRecette(r) {
   const erreurs = {};
-
-  if (recette.name.length < 3 || recette.name.length > 60) {
-    erreurs.name = "Le nom doit avoir entre 3 et 60 caractères.";
-  }
-  if (recette.cuisine === "") {
-    erreurs.cuisine = "Indiquez la cuisine.";
-  }
-  if (recette.difficulty === "") {
-    erreurs.difficulty = "Choisissez une difficulté.";
-  }
+  if (r.name.length < 3 || r.name.length > 60)
+    erreurs.name = "Entre 3 et 60 caractères.";
+  if (!r.cuisine) erreurs.cuisine = "Indiquez la cuisine.";
+  if (!r.difficulty) erreurs.difficulty = "Choisissez une difficulté.";
   if (
-    !Number.isInteger(recette.prepTimeMinutes) ||
-    recette.prepTimeMinutes < 1 ||
-    recette.prepTimeMinutes > 300
+    !Number.isInteger(r.prepTimeMinutes) ||
+    r.prepTimeMinutes < 1 ||
+    r.prepTimeMinutes > 300
   ) {
-    erreurs.prepTimeMinutes = "Le temps doit être entre 1 et 300 minutes.";
+    erreurs.prepTimeMinutes = "Entre 1 et 300 minutes.";
   }
-
-  return erreurs;
-}
-export function validerRecette(recette) {
-  const erreurs = {};
-
-  if (recette.name.length < 3 || recette.name.length > 60) {
-    erreurs.name = "Le nom doit avoir entre 3 et 60 caractères.";
-  }
-  if (recette.cuisine === "") {
-    erreurs.cuisine = "Indiquez la cuisine.";
-  }
-  if (recette.difficulty === "") {
-    erreurs.difficulty = "Choisissez une difficulté.";
-  }
-  if (
-    !Number.isInteger(recette.prepTimeMinutes) ||
-    recette.prepTimeMinutes < 1 ||
-    recette.prepTimeMinutes > 300
-  ) {
-    erreurs.prepTimeMinutes = "Le temps doit être entre 1 et 300 minutes.";
-  }
-
   return erreurs;
 }

@@ -7,22 +7,26 @@ export function showLoading() {
 }
 
 export function renderRecipes(recipes) {
-  statusEl.textContent = `${recipes.length} recettes`;
-  emptyEl.classList.toggle("hidden", recipes.length > 0);
   recipesEl.replaceChildren(...recipes.map(createCard));
+  majCompteur(recipes.length);
 }
 
 export function ajouterCarte(recipe) {
   recipesEl.prepend(createCard(recipe));
-  statusEl.textContent = `${recipesEl.children.length} recettes`;
+  majCompteur(recipesEl.children.length);
 }
 
 export function afficherErreurs(erreurs) {
   document.querySelectorAll(".erreur").forEach((p) => {
-    const message = erreurs[p.dataset.champ];
-    p.textContent = message || "";
-    p.classList.toggle("hidden", !message);
+    const msg = erreurs[p.dataset.champ] || "";
+    p.textContent = msg;
+    p.classList.toggle("hidden", !msg);
   });
+}
+
+function majCompteur(n) {
+  statusEl.textContent = `${n} recettes`;
+  emptyEl.classList.toggle("hidden", n > 0);
 }
 
 function createCard(recipe) {
@@ -30,17 +34,17 @@ function createCard(recipe) {
   card.className = "bg-white rounded-xl shadow p-4";
 
   const img = document.createElement("img");
-  img.src = recipe.image;
+  img.src = recipe.image || "https://placehold.co/400x300?text=Recette";
   img.alt = recipe.name;
   img.className = "h-40 w-full object-cover rounded";
 
   const titre = document.createElement("h2");
-  titre.className = "text-lg font-semibold mt-2";
   titre.textContent = recipe.name;
+  titre.className = "text-lg font-semibold mt-2";
 
   const infos = document.createElement("p");
-  infos.className = "text-sm text-gray-600";
   infos.textContent = `${recipe.cuisine} · ${recipe.difficulty} · ${recipe.prepTimeMinutes} min`;
+  infos.className = "text-sm text-gray-600";
 
   card.append(img, titre, infos);
   return card;

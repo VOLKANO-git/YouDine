@@ -3,6 +3,7 @@ const api = axios.create({
   timeout: 5000,
 });
 
+<<<<<<< HEAD
 export async function getRecipes() {
   const response = await api.get("/recipes", { params: { limit: 12 } });
   return response.data.recipes;
@@ -12,3 +13,5 @@ export async function searchRecipes(keyword) {
   const response = await api.get("/recipes/search", { params: { q: keyword } });
   return response.data.recipes;
 }
+=======
+>>>>>>> da3a6d7 (getting the api with axios)

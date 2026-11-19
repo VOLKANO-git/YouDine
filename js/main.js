@@ -3,12 +3,12 @@ import { showLoading, renderRecipes } from "./display.js";
 
 const form = document.getElementById("search-form");
 const input = document.getElementById("search-input");
-const revoirBtn = document.getElementById("revoir-tout");
+const revoirBtns = document.querySelectorAll(".revoir");
 
-async function afficher(query) {
+async function afficher(formula) {
   showLoading();
   try {
-    const recipes = query ? await searchRecipes(query) : await getRecipes();
+    const recipes = formula ? await searchRecipes(formula) : await getRecipes();
     renderRecipes(recipes);
   } catch (error) {
     console.error(error);
@@ -20,9 +20,11 @@ form.addEventListener("submit", (event) => {
   afficher(input.value.trim());
 });
 
-revoirBtn.addEventListener("click", () => {
-  input.value = "";
-  afficher("");
+revoirBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    input.value = "";
+    afficher("");
+  });
 });
 
 afficher("");

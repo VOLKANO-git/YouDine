@@ -33,6 +33,7 @@ searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   afficher(searchInput.value.trim());
 });
+
 revoirBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     searchInput.value = "";
@@ -43,15 +44,17 @@ revoirBtns.forEach((btn) => {
 formRecette.addEventListener("submit", async (e) => {
   e.preventDefault();
   formSucces.classList.add("hidden");
+
   const recette = {
     name: nomInput.value.trim(),
     cuisine: cuisineInput.value.trim(),
     difficulty: difficulteInput.value,
     prepTimeMinutes: Number(tempsInput.value),
   };
+
   const erreurs = validerRecette(recette);
   afficherErreurs(erreurs);
-  if (Object.keys(erreurs).length > 0) return;
+  if (erreurs.name || erreurs.cuisine || erreurs.difficulty || erreurs.prepTimeMinutes) return;
 
   btnAjouter.disabled = true;
   try {

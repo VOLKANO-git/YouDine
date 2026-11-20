@@ -19,3 +19,7 @@ export async function addRecipe(recette) {
   const response = await api.post("/recipes/add", recette);
   return response.data;
 }
+
+export async function deleteRecipe(id) {
+  await api.delete(`/recipes/${id}`);
+}

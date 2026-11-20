@@ -1,6 +1,8 @@
 const recipesEl = document.getElementById("recipes");
 const statusEl = document.getElementById("status");
 const emptyEl = document.getElementById("aucun-resultat");
+const erreurEl = document.getElementById("erreur");
+const erreurTexte = document.getElementById("erreur-texte");
 
 export function showLoading() {
   statusEl.textContent = "Chargement...";
@@ -59,4 +61,12 @@ export function retirerCarte(card) {
   card.remove();
   majCompteur(recipesEl.children.length);
   statusEl.textContent += " · Recette supprimée";
+}
+export function showError(message) {
+  erreurTexte.textContent = message;
+  erreurEl.classList.remove("hidden");
+}
+
+export function hideError() {
+  erreurEl.classList.add("hidden");
 }

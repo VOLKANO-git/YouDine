@@ -46,6 +46,17 @@ function createCard(recipe) {
   infos.textContent = `${recipe.cuisine} · ${recipe.difficulty} · ${recipe.prepTimeMinutes} min`;
   infos.className = "text-sm text-gray-600";
 
-  card.append(img, titre, infos);
+  card.dataset.id = recipe.id;
+  const bouton = document.createElement("button");
+  bouton.textContent = "Supprimer";
+  bouton.className = "supprimer mt-3 bg-red-500 text-white px-3 py-1 rounded";
+
+  card.append(img, titre, infos, bouton);
   return card;
+}
+
+export function retirerCarte(card) {
+  card.remove();
+  majCompteur(recipesEl.children.length);
+  statusEl.textContent += " · Recette supprimée";
 }

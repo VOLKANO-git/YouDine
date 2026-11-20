@@ -1,15 +1,11 @@
-import { getRecipes, searchRecipes, addRecipe } from "./api.js";
-import {
-  showLoading,
-  renderRecipes,
-  ajouterCarte,
-  afficherErreurs,
-} from "./display.js";
+import { getRecipes, searchRecipes, addRecipe, deleteRecipe } from "./api.js";
+import { showLoading, renderRecipes, ajouterCarte, afficherErreurs, retirerCarte } from "./display.js";
 import { validerRecette } from "./validation.js";
 
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 const revoirBtns = document.querySelectorAll(".revoir");
+const recipesEl = document.getElementById("recipes");
 const formRecette = document.getElementById("form-recette");
 const nomInput = document.getElementById("nom");
 const cuisineInput = document.getElementById("cuisine");
@@ -21,9 +17,7 @@ const formSucces = document.getElementById("form-succes");
 async function afficher(recherche = "") {
   showLoading();
   try {
-    renderRecipes(
-      recherche ? await searchRecipes(recherche) : await getRecipes(),
-    );
+    renderRecipes(recherche ? await searchRecipes(recherche) : await getRecipes());
   } catch (error) {
     console.error(error);
   }
@@ -65,6 +59,21 @@ formRecette.addEventListener("submit", async (e) => {
     console.error(error);
   } finally {
     btnAjouter.disabled = false;
+  }
+});
+
+recipesEl.addEventListener("click", async (e) => {
+  if (!e.target.classList.contains("supprimer")) return;
+
+  const card = e.target.closest("article");
+  const nom = card.querySelector("h2").textContent;
+  if (!confirm(`Supprimer « ${nom} » ?`)) return;
+
+  try {
+    await deleteRecipe(card.dataset.id);
+    retirerCarte(card);
+  } catch (error) {
+    console.error(error);
   }
 });
 
